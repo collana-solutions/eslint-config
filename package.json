@@ -1,6 +1,6 @@
 {
   "name": "@collana-solutions/eslint-config",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "This package provides the ESLint config of collana solutions as an extensible shared config.",
   "homepage": "https://github.com/collana-solutions/eslint-config#readme",
   "type": "module",
