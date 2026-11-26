@@ -38,12 +38,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Fixed
-
-- `getConfig` and the built-in configs (`configs.flat.nextjs` etc.) are typed as ESLint's `Linter.Config[]` instead of typescript-eslint's `FlatConfig.ConfigArray`
-
 ## [3.1.0] - 2026-10-15
 
 ### Added
