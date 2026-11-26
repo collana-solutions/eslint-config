@@ -1,5 +1,11 @@
 # @collana-solutions/eslint-config
 
+## 3.1.2
+
+### Patch Changes
+
+- [#29](https://github.com/collana-solutions/eslint-config/pull/29) [`7e92016`](https://github.com/collana-solutions/eslint-config/commit/7e92016fe61d86bf0431b0cc1459e2dc8870d528) Thanks [@neotob](https://github.com/neotob)! - `getConfig` and the built-in configs (`configs.flat.nextjs` etc.) are typed as ESLint's `Linter.Config[]` instead of typescript-eslint's `FlatConfig.ConfigArray`
+
 ## 3.1.1
 
 ### Patch Changes
