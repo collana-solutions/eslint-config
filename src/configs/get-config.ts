@@ -1,5 +1,5 @@
 import { InfiniteDepthConfigWithExtends } from "typescript-eslint";
-import type { TSESLint } from "@typescript-eslint/utils";
+import type { Linter } from "eslint";
 import { defineConfig } from "eslint/config";
 
 import defaults from "./providers/default.js";
@@ -113,14 +113,14 @@ const getConfig = (ruleConfig: ConfigurationType) => {
 
   if (includeonlyError) {
     configs.push({
-      name: "neolution/only-error",
+      name: "@collana-solutions/only-error",
       plugins: { "only-error": onlyError },
     });
   }
 
   if (includeonlyNoOnlyTests) {
     configs.push({
-      name: "neolution/no-only-tests",
+      name: "@collana-solutions/no-only-tests",
       plugins: {
         "no-only-tests": noOnlyTests,
       },
@@ -143,11 +143,12 @@ const getConfig = (ruleConfig: ConfigurationType) => {
 
   // defineConfig flattens the nested provider arrays and resolves `extends`, which
   // consumers may use in `overrides` (it is part of the public ConfigurationType).
-  // The casts keep the exported type stable, ESLint v9 and v10 declare the config
-  // types slightly differently, so a direct assertion only compiles on one of them.
+  // ESLint v9 and v10 declare the config types slightly differently, so a direct
+  // assertion only compiles on one of them. The result is typed as ESLint's own
+  // `Linter.Config[]`, which is resolved against the consumer's ESLint version.
   return defineConfig(
     ...(configs as unknown as Parameters<typeof defineConfig>),
-  ) as unknown as TSESLint.FlatConfig.ConfigArray;
+  ) as unknown as Linter.Config[];
 };
 
 export default getConfig;

@@ -1,15 +1,48 @@
-# Changelog
+# @collana-solutions/eslint-config
+
+## 3.1.2
+
+### Patch Changes
+
+- [#29](https://github.com/collana-solutions/eslint-config/pull/29) [`7e92016`](https://github.com/collana-solutions/eslint-config/commit/7e92016fe61d86bf0431b0cc1459e2dc8870d528) Thanks [@neotob](https://github.com/neotob)! - `getConfig` and the built-in configs (`configs.flat.nextjs` etc.) are typed as ESLint's `Linter.Config[]` instead of typescript-eslint's `FlatConfig.ConfigArray`
+
+## 3.1.1
+
+### Patch Changes
+
+- [#30](https://github.com/collana-solutions/eslint-config/pull/30) [`b020a85`](https://github.com/collana-solutions/eslint-config/commit/b020a851d859c043d0b141aa1f0118f540c80721) Thanks [@neotrow](https://github.com/neotrow)! - `@typescript-eslint/utils` is a declared dependency, because the published type declarations import its types. It is the version that `typescript-eslint` already installs, so no new package gets installed.
+
+- [#30](https://github.com/collana-solutions/eslint-config/pull/30) [`b020a85`](https://github.com/collana-solutions/eslint-config/commit/b020a851d859c043d0b141aa1f0118f540c80721) Thanks [@neotrow](https://github.com/neotrow)! - The package is now published as `@collana-solutions/eslint-config`, from version 3.1.0 on. The rules and the exports (`configs.flat.*`, `getConfig`, `defaults`) are unchanged. To migrate, replace the old package with the new one:
+
+  ```sh
+  npm uninstall @neolution-ch/eslint-config-neolution
+  npm install --save-dev @collana-solutions/eslint-config
+  ```
+
+  Then change the import in `eslint.config.mjs`. Before:
+
+  ```js
+  import neolutionEslintConfig from "@neolution-ch/eslint-config-neolution";
+
+  export default [...neolutionEslintConfig.configs.flat.nextjs];
+  ```
+
+  After:
+
+  ```js
+  import collanaEslintConfig from "@collana-solutions/eslint-config";
+
+  export default [...collanaEslintConfig.configs.flat.nextjs];
+  ```
+
+  The config objects are named `@collana-solutions/...` instead of `neolution/...`, for example `@collana-solutions/typescript`. The names only show up in `@eslint/config-inspector` and in ESLint's messages, so this matters only to a config that looks up these objects by name.
+
+  `@neolution-ch/eslint-config-neolution` gets deprecated and receives no further releases.
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-### Added
-
-- `typescriptStrict` option for `getConfig`, which uses the `strict` and `strictTypeChecked` configs of typescript-eslint instead of `recommended` and `recommendedTypeChecked`
 
 ## [3.1.0] - 2026-10-15
 
@@ -147,7 +180,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/neolution-ch/eslint-config-neolution/compare/3.1.0...HEAD
 [3.1.0]: https://github.com/neolution-ch/eslint-config-neolution/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/neolution-ch/eslint-config-neolution/compare/2.6.0...3.0.0
 [2.6.0]: https://github.com/neolution-ch/eslint-config-neolution/compare/2.5.0...2.6.0

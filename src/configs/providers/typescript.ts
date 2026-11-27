@@ -55,7 +55,7 @@ const getTypescriptRules = (
     }),
   ),
   {
-    name: "neolution/typescript/parser-options",
+    name: "@collana-solutions/typescript/parser-options",
     files: ["**/*.ts", "**/*.tsx", "**/*.mts"],
 
     // This is required, see the docs
@@ -71,14 +71,14 @@ const getTypescriptRules = (
     },
   },
   {
-    name: "neolution/typescript/javascript-files",
+    name: "@collana-solutions/typescript/javascript-files",
     files: ["**/*.js", "**/*.jsx"],
     rules: {
       "@typescript-eslint/no-require-imports": "off",
     },
   },
   {
-    name: "neolution/typescript",
+    name: "@collana-solutions/typescript",
     files: ["**/*.ts", "**/*.tsx", "**/*.mts"], // We use TS config only for TS files
     rules: {
       "@typescript-eslint/no-misused-promises": [
